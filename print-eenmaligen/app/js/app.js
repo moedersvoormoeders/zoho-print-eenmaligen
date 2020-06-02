@@ -54,4 +54,41 @@ async function sendPrintKleding() {
 	  })
 	});
 	return await response.json();
-  }
+}
+
+async function sendVoeding(groot,halal) {
+	let grootte = "klein"
+	let typeVoeding = "gewoon"
+	if (halal) {
+		typeVoeding = "halal"
+	}
+	if (groot) {
+		grootte = "groot"
+	}
+	sendPrintVoeding(typeVoeding, grootte).then((resp)=> {
+		alert("Print verzonden!")
+		$("#bericht").val("")
+	}, ()=> alert("Fout opgetreden, print niet verzonden"))
+}
+
+async function sendPrintVoeding(typeVoeding, grootte) {
+	// TODO: change printer FQDN
+	const response = await fetch("https://print.voeding.mvm.maartje.dev/eenmaligen", {
+	  method: 'POST',
+	  mode: 'cors',
+	  cache: 'no-cache',
+	  credentials: 'same-origin',
+	  headers: {
+		'Content-Type': 'application/json'
+		 },
+	  redirect: 'follow',
+	  referrerPolicy: 'no-referrer',
+	  body: JSON.stringify({
+		"eenmaligenNummer": eenmaligenNummer,
+		"naam": naam,
+		"typeVoeding": typeVoeding,
+		"grootte": grootte,
+	  })
+	});
+	return await response.json();
+}
