@@ -36,8 +36,7 @@ function sendPrint() {
 }
 
 async function sendPrintKleding() {
-	// TODO: change printer FQDN
-	const response = await fetch("https://print.kleding.mvm.maartje.dev/eenmaligen", {
+	const response = await fetch("https://onthaal.print.mvm.digital/eenmaligen", {
 	  method: 'POST',
 	  mode: 'cors',
 	  cache: 'no-cache',
