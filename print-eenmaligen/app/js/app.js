@@ -72,7 +72,7 @@ async function sendVoeding(groot,halal) {
 
 async function sendPrintVoeding(typeVoeding, grootte) {
 	// TODO: change printer FQDN
-	const response = await fetch("https://print.voeding.mvm.maartje.dev/eenmaligen", {
+	const response = await fetch("https://voeding.print.mvm.digital/eenmaligen", {
 	  method: 'POST',
 	  mode: 'cors',
 	  cache: 'no-cache',
